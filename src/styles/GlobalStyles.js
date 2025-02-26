@@ -7,6 +7,21 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: Arial, sans-serif;
   }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #BDBDBD;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #103979;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background:rgb(44, 90, 163);
+  }
   
 `;
 
