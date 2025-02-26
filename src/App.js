@@ -4,7 +4,7 @@ import PersonList from './components/PersonList';
 import Button from './components/Button';
 import Modal from './components/Modal';
 import PersonForm from './components/PersonForm';
-import PersonDetails from './components/PersonDetails';
+// import PersonDetails from './components/PersonDetails';
 import MenuIcon from './assets/menu.png';
 import CloseIcon from './assets/close.png';
 import LogoIcon from './assets/logo.png';
@@ -48,6 +48,7 @@ const Sidebar = styled.div`
   transition: left 0.4s ease;
   padding: 20px;
   padding-top: 100px;
+  overflow-y: auto;
 `;
 
 const ToggleButton = styled.button`
@@ -104,7 +105,6 @@ const App = () => {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const [isSubMenuOpen2, setSubMenuOpen2] = useState(false);
   const [isSubMenuOpen3, setSubMenuOpen3] = useState(false);
-  const [isSubMenuOpen4, setSubMenuOpen4] = useState(false);
 
   useEffect(() => {
     const savedPeople = JSON.parse(localStorage.getItem('people')) || [];
@@ -140,7 +140,12 @@ const App = () => {
       <ToggleButton onClick={() => setSidebarOpen(!isSidebarOpen)}>
         <Icon src={isSidebarOpen ? CloseIcon : MenuIcon} alt="menu icon" />
         </ToggleButton>
-        <h3>Cadastros de Jogadores</h3>
+        <Button
+  onClick={() => setAddModalOpen(true)}
+  style={{ backgroundColor: '#2D44A4' }}
+>
+  Cadastrar Jogador
+</Button>
       </HeaderLateral>
         <Logo src={LogoIcon} alt="menu icon" />
         </HeaderObj>
@@ -175,15 +180,6 @@ const App = () => {
           <SubButton onClick={() => alert('Opção 2 clicada')}>Opção 2</SubButton>
           <SubButton onClick={() => alert('Opção 3 clicada')}>Opção 3</SubButton>
         </SubMenu>
-
-        <SubMenuButton onClick={() => setSubMenuOpen4(!isSubMenuOpen4)}>
-          Mais Opções 4
-        </SubMenuButton>
-        <SubMenu isOpen={isSubMenuOpen4}>
-        <SubButton onClick={() => alert('Opção 1 clicada')}>Opção 1</SubButton>
-          <SubButton onClick={() => alert('Opção 2 clicada')}>Opção 2</SubButton>
-          <SubButton onClick={() => alert('Opção 3 clicada')}>Opção 3</SubButton>
-        </SubMenu>
         <MenuTexto>Informativo:</MenuTexto>
         <MenuParagrafo>Projeto Iniciado dia 25.02</MenuParagrafo>
         <MenuParagrafo>Termino 26.02</MenuParagrafo>
@@ -197,7 +193,7 @@ const App = () => {
       </Modal>
       <Modal isOpen={isDetailModalOpen} onClose={() => setDetailModalOpen(false)}>
         {selectedPerson && (
-          <PersonDetails person={selectedPerson} onSave={handleUpdatePerson} />
+          <PersonForm person={selectedPerson} onSave={handleUpdatePerson} />
         )}
       </Modal>
     </AppContainer>

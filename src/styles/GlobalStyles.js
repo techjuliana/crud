@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: Arial, sans-serif;
   }
+  
 `;
 
 export default GlobalStyles;
