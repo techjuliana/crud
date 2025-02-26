@@ -22,7 +22,16 @@ const Card = styled.div`
   display: flex;
   align-items: start;
   flex-direction: row;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+  }
 `;
+
+
 
 const Title = styled.h4`
   margin: 0 0 10px 0;
