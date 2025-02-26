@@ -47,6 +47,10 @@ const Value = styled.div`
 
 const Lateral = styled.div`
   margin-left: 30px;
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    margin: 10px;
+  }
 `;
 
 const Cadastro = styled.div`
